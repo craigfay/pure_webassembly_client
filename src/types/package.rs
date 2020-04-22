@@ -69,4 +69,3 @@ pub struct Video {
     pub href: String,
 }
 
-

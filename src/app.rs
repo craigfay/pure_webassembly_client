@@ -69,7 +69,7 @@ impl Component for App {
 
                     <img src={ &article.heroMedia.image.url } />
 
-                    { for article.articleBody.iter().map(renderArticleBodyBlock) }
+                    { for article.articleBody.iter().map(|block: &ArticleBodyBlock| renderArticleBodyBlock(&block, &article)) }
                 </>
             },
             None => html! {
@@ -90,7 +90,7 @@ fn setInnerHtml(tag: &str, innerHtml: &str) -> Html {
     VNode::VRef(node)
 }
 
-fn renderArticleBodyBlock(block: &ArticleBodyBlock) -> Html {
+fn renderArticleBodyBlock(block: &ArticleBodyBlock, article: &Article) -> Html {
     match &block.r#type[..] {
         "paragraph" => html! {
            match &block.text.as_ref() {
@@ -104,6 +104,13 @@ fn renderArticleBodyBlock(block: &ArticleBodyBlock) -> Html {
                 alt={ &block.image.as_ref().unwrap().title }
             />
         },
+        "video" => html! {
+            <video
+                src={ &article.assets.videoPlaylist[ &block.r#ref.unwrap() ].href }
+                controls={true}
+            /> 
+        },
         _ => html! { <div>{ "Unknown Block" }</div> }
     }
 }
+
