@@ -17,5 +17,33 @@ pub struct ArticleWrapper {
 #[serde(rename_all = "camelCase")]
 pub struct Article {
     pub title: String, 
+    pub subTitle: String,
+    pub publishedDate: String,
+    pub heroMedia: Media,
+    pub articleBody: Vec<ArticleBodyBlock>,
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Media {
+    pub r#type: String,
+    pub r#ref: i32,
+    pub image: Image,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Image {
+    pub title: String,
+    pub url: String,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct ArticleBodyBlock {
+    pub r#type: String,
+    pub r#ref: Option<i32>,
+    pub text: Option<String>,
+}
+
 

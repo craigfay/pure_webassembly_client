@@ -4,7 +4,7 @@ use log::debug;
 
 use crate::error::Error;
 use crate::services::{Data};
-use crate::types::{Package, Article};
+use crate::types::{Package, Article, ArticleBodyBlock};
 
 pub struct App {
     link: ComponentLink<Self>,
@@ -59,23 +59,25 @@ impl Component for App {
     }
 
     fn view(&self) -> Html {
-        html! {
-            <>
-                <link href="main.css" rel="stylesheet"/>
-                <div>
-                    <button onclick=self.link.callback(|_| Msg::AddOne)>{ "Increment" }</button>
-                    <p>{ self.value }</p>
-                </div>
+        return match &self.article {
+            Some(article) => html! {
+                <>
+                    <h1>{ &article.title }</h1>
 
-                <div>
-                    { for self.items.iter().map(renderItem) }
-                </div>
-            </>
+                    <img src={ &article.heroMedia.image.url } />
+
+                    { for article.articleBody.iter().map(renderArticleBodyBlock) }
+                </>
+            },
+            None => html! {
+                <div></div>
+            },
         }
+
     }
 }
 
-fn renderItem(n: &i32) -> Html {
+fn renderArticleBodyBlock(block: &ArticleBodyBlock) -> Html {
     html! {
         <p>{ "Paragraph" }</p>
     }
