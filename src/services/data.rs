@@ -3,7 +3,7 @@ use yew::callback::Callback;
 use yew::services::fetch::FetchTask;
 use dotenv_codegen::dotenv;
 
-use crate::types::PackageWrapper;
+use crate::types::Package;
 use crate::error::Error;
 use super::Requests;
 
@@ -23,9 +23,9 @@ impl Data {
     /// Fetch article data
     pub fn article(
         &mut self,
-        callback: Callback<Result<PackageWrapper, Error>>,
+        callback: Callback<Result<Package, Error>>,
     ) -> FetchTask {
-        self.requests.get::<PackageWrapper>(
+        self.requests.get::<Package>(
             ARTICLE_API.to_string(),
             callback,
         ) 
