@@ -52,7 +52,6 @@ impl Component for App {
             Msg::CurrentPackageResponse(Ok(package)) => {
                 self.article = Some(package.data.article);
                 self.current_package_task = None;
-                debug!("{:?}", self.article);
             }
             Msg::CurrentPackageResponse(Err(_)) => {
                 self.current_package_task = None;
@@ -98,6 +97,12 @@ fn renderArticleBodyBlock(block: &ArticleBodyBlock) -> Html {
                Some(innerHtml) => setInnerHtml("p", innerHtml),
                None => html! {}
            }
+        },
+        "image" => html! {
+            <img
+                src={ &block.image.as_ref().unwrap().url }
+                alt={ &block.image.as_ref().unwrap().title }
+            />
         },
         _ => html! { <div>{ "Unknown Block" }</div> }
     }

@@ -44,6 +44,7 @@ pub struct ArticleBodyBlock {
     pub r#type: String,
     pub r#ref: Option<i32>,
     pub text: Option<String>,
+    pub image: Option<Image>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
