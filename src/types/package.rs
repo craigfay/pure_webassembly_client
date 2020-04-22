@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
@@ -21,6 +22,7 @@ pub struct Article {
     pub publishedDate: String,
     pub heroMedia: Media,
     pub articleBody: Vec<ArticleBodyBlock>,
+    pub assets: Assets,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -53,4 +55,18 @@ pub struct ParagraphBlock {
     pub r#type: String,
     pub text: String,
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Assets {
+    pub videoPlaylist: HashMap<i32, Video>
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Video {
+    pub title: String,
+    pub href: String,
+}
+
 
