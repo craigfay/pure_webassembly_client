@@ -2,6 +2,9 @@ use yew::prelude::*;
 use yew::services::fetch::FetchTask;
 use log::debug;
 
+use web_sys::{Node};
+use yew::virtual_dom::VNode;
+
 use crate::error::Error;
 use crate::services::{Data};
 use crate::types::{Package, Article, ArticleBodyBlock};
@@ -63,6 +66,7 @@ impl Component for App {
             Some(article) => html! {
                 <>
                     <h1>{ &article.title }</h1>
+                    <h2>{ &article.subTitle }</h2>
 
                     <img src={ &article.heroMedia.image.url } />
 
@@ -77,8 +81,24 @@ impl Component for App {
     }
 }
 
+fn setInnerHtml(tag: &str, innerHtml: &str) -> Html {
+    let element = web_sys::window().unwrap()
+        .document().unwrap()
+        .create_element(tag).unwrap();
+
+    element.set_inner_html(innerHtml);
+    let node = Node::from(element);
+    VNode::VRef(node)
+}
+
 fn renderArticleBodyBlock(block: &ArticleBodyBlock) -> Html {
-    html! {
-        <p>{ "Paragraph" }</p>
+    match &block.r#type[..] {
+        "paragraph" => html! {
+           match &block.text.as_ref() {
+               Some(innerHtml) => setInnerHtml("p", innerHtml),
+               None => html! {}
+           }
+        },
+        _ => html! { <div>{ "Unknown Block" }</div> }
     }
 }

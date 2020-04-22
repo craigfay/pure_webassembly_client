@@ -46,4 +46,10 @@ pub struct ArticleBodyBlock {
     pub text: Option<String>,
 }
 
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct ParagraphBlock {
+    pub r#type: String,
+    pub text: String,
+}
 
