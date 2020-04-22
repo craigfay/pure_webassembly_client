@@ -66,10 +66,12 @@ impl Component for App {
                 <>
                     <h1>{ &article.title }</h1>
                     <h2>{ &article.subTitle }</h2>
-
                     <img src={ &article.heroMedia.image.url } />
 
-                    { for article.articleBody.iter().map(|block: &ArticleBodyBlock| renderArticleBodyBlock(&block, &article)) }
+                    {
+                        for article.articleBody.iter()
+                            .map(|b| renderArticleBodyBlock(&b, &article))                        
+                    }
                 </>
             },
             None => html! {
