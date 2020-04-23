@@ -34,8 +34,27 @@ impl Component for RelatedArticles {
 
     fn view(&self) -> Html {
         html! {
-            <h1>{ "Related" }</h1>
+            <>
+                <header>
+                    <h3>{ "Related Articles" }</h3>
+                </header>
+                <div class={"grid"}>
+                    { for self.props.previews.iter().map(renderArticlePreview) }
+                </div>
+            </>
         }
+    }
+}
+
+fn renderArticlePreview(preview: &ArticlePreview) -> Html {
+    html! {
+        <div class={"article-preview"}>
+            <img src={ &preview.thumbnail.url } />
+            <header>
+                <h4>{ &preview.title }</h4>
+                <span class={"contributor"}>{ &preview.contributors[0].displayName }</span>
+            </header>
+        </div>
     }
 }
 

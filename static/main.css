@@ -14,7 +14,7 @@ body {
     box-sizing: border-box;
     background: var(--offwhite);
     margin: 0;
-    font-size: 48px;
+    font-size: 18px;
 }
 
 main {
@@ -23,17 +23,31 @@ main {
   font-family: var(--sans);
 }
 
+header {
+  padding: 0 1em;
+}
+
 h1 {
-  font-size: 2.2em;
+  font-size: 1.5em;
   font-family: var(--sans);
-  margin-bottom: 0;
+  margin-bottom: .5em;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 0 0 1em 0;
   color: var(--gray);
   font-weight: normal;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+h4 {
+  font-size: 1em;
+  margin: 0 0 .3em 0;
 }
 
 p {
@@ -42,6 +56,7 @@ p {
     line-height: 1.6;
     font-weight: 300;
     margin: 2em 0;
+    padding: 1em;
 }
 
 a {
@@ -51,6 +66,33 @@ a {
 img, video {
     width: 100%;
     display: block;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.article-preview {
+  width: calc(50% - .5em);
+  width: 100%;
+  margin: 0 0 2em 0;
+}
+
+.article-preview img {
+  margin: 1em 0;
+  object-fit: contain;
+}
+
+.contributor {
+  color: var(--gray);
+}
+
+@media only screen and (max-width: 1200) {
+  body {
+    font-size: 48px;
+  }
 }
 
 

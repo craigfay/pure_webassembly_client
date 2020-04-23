@@ -81,6 +81,7 @@ impl Component for App {
                             for article.articleBody.iter()
                                 .map(|b| renderArticleBodyBlock(&b, &article))                        
                         }
+                        <RelatedArticles previews={ &article.relatedArticles } />
                     </main>
                 </>
             },

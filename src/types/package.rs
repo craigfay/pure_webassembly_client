@@ -31,7 +31,7 @@ pub struct Article {
 pub struct ArticlePreview {
     pub title: String, 
     pub publishedDate: String,
-    contributors: Vec<Contributor>,
+    pub contributors: Vec<Contributor>,
     pub thumbnail: Thumbnail,
 }
 
@@ -46,8 +46,6 @@ pub struct Contributor {
 pub struct Thumbnail {
     pub url: String, 
 }
-
-
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
