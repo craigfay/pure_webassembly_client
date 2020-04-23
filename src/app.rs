@@ -8,6 +8,7 @@ use yew::virtual_dom::VNode;
 use crate::error::Error;
 use crate::services::{Data};
 use crate::types::{Package, Article, ArticleBodyBlock};
+use crate::components::{RelatedArticles};
 
 pub struct App {
     link: ComponentLink<Self>,

@@ -3,6 +3,7 @@ pub mod app;
 pub mod types;
 pub mod error;
 pub mod services;
+pub mod components;
 
 use wasm_bindgen::prelude::*;
 use web_logger;
