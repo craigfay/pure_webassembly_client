@@ -23,7 +23,31 @@ pub struct Article {
     pub heroMedia: Media,
     pub articleBody: Vec<ArticleBodyBlock>,
     pub assets: Assets,
+    pub relatedArticles: Vec<ArticlePreview>,
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct ArticlePreview {
+    pub title: String, 
+    pub publishedDate: String,
+    contributors: Vec<Contributor>,
+    pub thumbnail: Thumbnail,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Contributor {
+    pub displayName: String, 
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Thumbnail {
+    pub url: String, 
+}
+
+
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[serde(rename_all = "camelCase")]
@@ -47,13 +71,6 @@ pub struct ArticleBodyBlock {
     pub r#ref: Option<i32>,
     pub text: Option<String>,
     pub image: Option<Image>,
-}
-
-#[derive(Serialize, Deserialize, Clone, Debug)]
-#[serde(rename_all = "camelCase")]
-pub struct ParagraphBlock {
-    pub r#type: String,
-    pub text: String,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
