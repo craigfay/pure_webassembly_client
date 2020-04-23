@@ -64,14 +64,23 @@ impl Component for App {
         return match &self.article {
             Some(article) => html! {
                 <>
-                    <h1>{ &article.title }</h1>
-                    <h2>{ &article.subTitle }</h2>
-                    <img src={ &article.heroMedia.image.url } />
 
-                    {
-                        for article.articleBody.iter()
-                            .map(|b| renderArticleBodyBlock(&b, &article))                        
-                    }
+                    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700&display=swap" rel="stylesheet"/>
+                    <link rel={"stylesheet"} href={"/static/main.css"} />
+
+
+                    <main>
+                        <header> 
+                            <h1>{ &article.title }</h1>
+                            <h2>{ &article.subTitle }</h2>
+                        </header>
+                        <img src={ &article.heroMedia.image.url } />
+
+                        {
+                            for article.articleBody.iter()
+                                .map(|b| renderArticleBodyBlock(&b, &article))                        
+                        }
+                    </main>
                 </>
             },
             None => html! {

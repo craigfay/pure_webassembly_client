@@ -1,1 +1,56 @@
+@font-face {
+    font-family:"brandon-grotesque";
+    src:url("https://use.typekit.net/af/1da05b/0000000000000000000132df/27/l?primer=e6c2eab99082c384418723dcd41253420aae85e0330ab98c7e2c76da885385ab&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/1da05b/0000000000000000000132df/27/d?primer=e6c2eab99082c384418723dcd41253420aae85e0330ab98c7e2c76da885385ab&fvd=n4&v=3") format("woff");
+    font-display:swap;font-style:normal;font-weight:400;
+}
+
+:root {
+    --gray: #717D7E;
+    --offwhite: #f8f8f8;
+    --sans: 'Roboto', sans-serif;
+}
+
+body {
+    box-sizing: border-box;
+    background: var(--offwhite);
+    margin: 0;
+    font-size: 48px;
+}
+
+main {
+  max-width: 2400px;
+  margin: 0 auto;
+  font-family: var(--sans);
+}
+
+h1 {
+  font-size: 2.2em;
+  font-family: var(--sans);
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 0 0 1em 0;
+  color: var(--gray);
+  font-weight: normal;
+}
+
+p {
+    letter-spacing: .02em;
+    word-spacing: .15em;
+    line-height: 1.6;
+    font-weight: 300;
+    margin: 2em 0;
+}
+
+a {
+  color: var(--gray);
+}
+
+img, video {
+    width: 100%;
+    display: block;
+}
+
 
