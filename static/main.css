@@ -71,27 +71,46 @@ img, video {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .article-preview {
-  width: calc(50% - .5em);
   width: 100%;
   margin: 0 0 2em 0;
+  box-sizing: border-box;
 }
 
 .article-preview img {
   margin: 1em 0;
-  object-fit: contain;
 }
 
 .contributor {
   color: var(--gray);
 }
 
-@media only screen and (max-width: 1200) {
+@media only screen and (min-width: 700px) {
+  body {
+    font-size: 32px;
+  }
+  .article-preview {
+    width: 50%;
+  }
+  .article-preview:not(:nth-child(2n)) {
+  	padding-right: 1em;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
   body {
     font-size: 48px;
+  }
+  .article-preview {
+    width: 25%;
+  }
+  .article-preview:not(:nth-child(4n)) {
+  	padding-right: 1em;
+  }
+  h4, .contributor {
+    font-size: .8em;
   }
 }
 
