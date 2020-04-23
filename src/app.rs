@@ -64,26 +64,19 @@ impl Component for App {
     fn view(&self) -> Html {
         return match &self.article {
             Some(article) => html! {
-                <>
+                <main>
+                    <header> 
+                        <h1>{ &article.title }</h1>
+                        <h2>{ &article.subTitle }</h2>
+                    </header>
+                    <img src={ &article.heroMedia.image.url } />
 
-                    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700&display=swap" rel="stylesheet"/>
-                    <link rel={"stylesheet"} href={"/static/main.css"} />
-
-
-                    <main>
-                        <header> 
-                            <h1>{ &article.title }</h1>
-                            <h2>{ &article.subTitle }</h2>
-                        </header>
-                        <img src={ &article.heroMedia.image.url } />
-
-                        {
-                            for article.articleBody.iter()
-                                .map(|b| renderArticleBodyBlock(&b, &article))                        
-                        }
-                        <RelatedArticles previews={ &article.relatedArticles } />
-                    </main>
-                </>
+                    {
+                        for article.articleBody.iter()
+                            .map(|b| renderArticleBodyBlock(&b, &article))                        
+                    }
+                    <RelatedArticles previews={ &article.relatedArticles } />
+                </main>
             },
             None => html! {
                 <div></div>
